@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+//DONT ALLOW MULTIPLE EMAIL REGISTERS
 const Register = () => {
   const [firstName, setFirstname] = useState('');
   const [lastName, setLastname] = useState('');
@@ -18,8 +18,8 @@ const Register = () => {
         password: password,
       });
 
-      if (response.status === 200) {
-        // Registration was successful
+      if (response.status === 200 && response.data.includes('html')) {
+        console.log(response.data)
         console.log('Registration successful');
       } else {
         // Handle error here
