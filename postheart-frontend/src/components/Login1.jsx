@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Wrapper, GoogleMap, Marker } from '@googlemaps/react-wrapper'; // Adjust imports as necessary
 import axios from 'axios';
-import { useNavigate , Link} from 'react-router-dom';
+
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const render = (status) => {
-    return <h1>{status}</h1>; // Placeholder for loading or error messages
-  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -84,7 +81,7 @@ const Login = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+          Email:
           <input
             type="text"
             value={username}
@@ -104,8 +101,8 @@ const Login = () => {
           Don't have an account? <Link to="/Register">Register</Link>
         </p>
       </form>
-      {/* Map Component */}
-      <Wrapper apiKey={process.env.REACT_APP_APIKEY} render={render}>
+      
+      <Wrapper apiKey={process.env.REACT_APP_APIKEY}>
         <GoogleMap
           center={{ lat: -34.397, lng: 150.644 }}
           zoom={8}
@@ -132,3 +129,4 @@ const Login = () => {
 };
 
 export default Login;
+
